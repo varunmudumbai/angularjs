@@ -1,0 +1,100 @@
+<!-- this is index.html -->
+
+<html>
+	<head>
+	
+		<script src="angular.min.js" ></script>
+		
+		
+	
+	</head>
+	<body ng-app="MyApp">
+	<h1>index</h1>
+		<a href="#/1.html" >view1</a>
+		<a href="#/2.html" >view2</a>
+		<div ng-view="">
+		
+			
+		
+		</div>
+	<script>
+		var MyApp = angular.module('MyApp',[]);
+		
+		MyApp.controller('controllerS1',function($scope){
+		
+		$scope.friends = [ 
+		{name : 'Varun Malyala', place: 'New Delhi' },
+		{name : 'Kalpak' , place: 'Jabalpur'},
+		{name : 'Nikhil' , place:'Bengaluru'}
+		];
+		
+		
+		});
+		MyApp.config(function ($routeProvider){
+		$routeProvider
+		.when('/',{
+		
+		controller : 'controllerS1',
+		templateUrl : 'index.html'
+		
+		})
+		.when('/1',{
+		
+		controller : 'controllerS1',
+		templateUrl : '1.html'
+		
+		})
+		.when('/2',{
+		
+		controller : 'controllerS1',
+		templateUrl : '2.html'
+		
+		})
+		.otherwise({redirectTo:'/'})
+		
+		
+		});</script>
+	</body>
+
+
+</html>
+
+
+
+
+
+
+<!-- this is 1.html -->
+
+	
+		<div>
+			<h1>v1</h1>
+		<ul>
+			<li ng-repeat="n in friends">{{n.name}}</li>
+		
+		</ul>
+			
+			<a href="#/index.html" >index</a>
+			<a href="#/2.html" >view2</a>
+			
+		</div>
+	
+
+<!-- this is 2.html -->
+
+
+
+		<div>
+			<h1>v2</h1>
+			
+		<ul>
+			<li ng-repeat="n in friends">{{n.name}}</li>
+		
+		</ul>
+			
+			<a href="#/index.html" >index</a>
+			<a href="#/1.html" >view1</a>
+			
+		</div>
+	
+	
